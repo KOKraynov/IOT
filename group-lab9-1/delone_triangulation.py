@@ -1,8 +1,11 @@
+
+import numpy as np
+from scipy.spatial import Delaunay
 def delone_triangulation(self,points, values, p, n):
     #https://stackoverflow.com/questions/30373912/interpolation-with-delaunay-triangulation-n-dim
     # dimension of the problem (in this example I use 3D grid,
     # but the method works for any dimension n>=2)
-    #n = 2
+    n = 2
     # my array of grid points (array of n-dimensional coordinates)
     #points = [[1, 2], [2, 3], ...]
     # each point has some assigned value that will be interpolated

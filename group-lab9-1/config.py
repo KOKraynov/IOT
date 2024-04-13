@@ -5,6 +5,7 @@ errorTextInterpolate = 'Интерполяция не сделана'
 
 data = []
 interpolateData = []
+interpolatePoints = []
 
 #Объекты окон приложения
 mainApp = None
