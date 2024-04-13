@@ -34,21 +34,25 @@ class EpuraWindow(Tk):
         values=np.array(config.data)[:, 2]
         p_values=[]
         p=np.array(config.interpolatePoints)
-        b=[]
+        b0=[]
         tri = Delaunay(points)
         s = tri.find_simplex(p)
         v = tri.vertices[s]
         m = tri.transform[s]
-  #      for i in range(len(p)):
-  #          b[i] = m[i, :n, :n].dot(p[i] - m[i, n, :])
-  #      w = np.c_[b, 1 - b.sum(axis=1)]
-  #      for i in range(len(p)):
-  #          p_values[i] = np.inner(values[v[i]], w[i])
-  #      print(p_values)
+        for i in range(len(p)):
+            s = m[i, :n, :n]
+            s1 = m[i, n, :]
+            b0.append(m[i, :n, :n].dot(p[i] - m[i, n, :]))
+        b=np.array(b0)
+        w = np.c_[b, 1 - b.sum(axis=1)]
+        for i in range(len(p)):
+            p_values.append( np.inner(values[v[i]], w[i]))
+        print(p_values)
         # Изобразить scatter
-        x = self.interpolatePoints[:, 0].flatten()
-        y = self.interpolatePoints[:, 1].flatten()
-        scatter = self.plot1.scatter(x, y, cmap='viridis')
+        #x = self.interpolatePoints[:, 0].flatten()
+        #y = self.interpolatePoints[:, 1].flatten()
+        p00=[0, 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+        scatter = self.plot1.scatter(p00, p_values, cmap='viridis')
         # Создание Tkinter canvas
         # включение в нее Matplotlib figure
         self.canvas = FigureCanvasTkAgg(fig, master=self)

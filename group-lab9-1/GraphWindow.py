@@ -72,7 +72,7 @@ class GraphWindow(Tk):
             self.line_start = None
             self.plot1.plot([x_origin, x], [y_origin, y], 'black', lw=1)
             self.points = []
-            for i in range(1, 19, 1):
+            for i in range(0, 20, 1):
                 x0=x_origin+(x-x_origin)*i/19
                 y0=y_origin+(y-y_origin)*i/19
                 self.points.append([x0, y0])
