@@ -14,7 +14,8 @@ if sys.platform.startswith("win"):
 else:
     icon = "@" + path + "interest.xbm"
 app.iconbitmap(icon)
-app.title("Interest")
+app.geometry('300x200+600+400')
+app.title("Ростовщик")
 window = MainWindow(app)
 app.protocol("WM_DELETE_WINDOW", window.quit)
 app.mainloop()
